@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using user_service.Application.Interfaces;
 using user_service.Infrastructure.Persistence;
 using user_service.Infrastructure.Services;
+using user_service.Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+// Add services to the container.
+builder.Services.AddPresentation();
 
 var app = builder.Build();
 
